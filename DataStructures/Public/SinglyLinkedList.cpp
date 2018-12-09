@@ -3,3 +3,13 @@
 //
 
 #include "../Private/SinglyLinkedList.h"
+SinglyLinkedList::SinglyLinkedList():head(nullptr), size(0) {
+
+}
+SinglyLinkedList::~SinglyLinkedList() {}
+
+
+bool SinglyLinkedList::isEmpty() {
+    return head != nullptr;
+}
+

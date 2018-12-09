@@ -7,6 +7,8 @@
 
 
 class ArrayList {
+private:
+    int size;
 
 };
 

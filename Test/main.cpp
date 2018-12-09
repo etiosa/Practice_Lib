@@ -1,6 +1,7 @@
 #include <iostream>
-
+#include "../DataStructures/Private/SinglyLinkedList.h"
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    SinglyLinkedList testing;
+
     return 0;
 }

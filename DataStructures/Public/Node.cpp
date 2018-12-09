@@ -3,3 +3,7 @@
 //
 
 #include "../Private/Node.h"
+
+Node::Node():next(nullptr) {
+
+}

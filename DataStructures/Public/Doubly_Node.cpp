@@ -4,6 +4,10 @@
 
 #include "../Private/Doubly_Node.h"
 
-Doubly_Node::Doubly_Node():next(nullptr), prev(nullptr) {
+Doubly_Node::Doubly_Node(std::string data):next(nullptr), prev(nullptr), data(data) {
+
+}
+Doubly_Node::~Doubly_Node()
+{
 
 }

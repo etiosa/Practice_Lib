@@ -4,6 +4,18 @@
 
 #include "../Private/Node.h"
 
-Node::Node():next(nullptr) {
 
+Node::Node(int data):next(nullptr), data(data), indexPosition(0) {
+
+
+}
+
+Node::~Node()
+{
+
+}
+
+void Node::setUpIndex(int index)
+{
+    indexPosition=index;
 }

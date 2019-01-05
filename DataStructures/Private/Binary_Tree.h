@@ -4,9 +4,12 @@
 
 #ifndef PRACTICE_LIB_BINARY_TREE_H
 #define PRACTICE_LIB_BINARY_TREE_H
-
+#include<memory>
 
 class Binary_Tree {
+private:
+
+    //std::sha
 
 };
 

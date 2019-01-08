@@ -7,6 +7,11 @@
 
 
 class Stacks_Imp {
+private:
+    int size;
+
+public:
+    void push(int);
 
 };
 

@@ -15,10 +15,21 @@ private:
     //Doubly_Node* tail;
     std::shared_ptr<Doubly_Node>head;
     std::shared_ptr<Doubly_Node> tail;
+    int indexPosition;
+    /* Change the argument to template */
     bool linkedLast(int);
     bool linkedFirst(int);
+    bool linkedAFter(std::shared_ptr<Doubly_Node>&, int);
+    bool linkedBefore(std::shared_ptr<Doubly_Node>&,int);
+    /* add node base on the index*/
+    bool linkAdd (int,int);
 
 	std::shared_ptr<Doubly_Node> createNode(int);
+
+
+	std::shared_ptr<Doubly_Node> findNode(std::shared_ptr<Doubly_Node>&);
+	bool isIndexVaild(int);
+	std::shared_ptr<Doubly_Node>findNodeIndex(int index);
 
 public:
     DoublyLinkedList();
@@ -28,8 +39,11 @@ public:
     void pushBack(int );
 	void reverse();
 	void printInfo();
+	void addAfter(std::shared_ptr<Doubly_Node>&, int);
+	void addBefore(std::shared_ptr<Doubly_Node>&, int);
 
-
+    std::shared_ptr<Doubly_Node> getHead() const{ return head;}
+    std::shared_ptr<Doubly_Node> getTail() const{ return tail;}
 
 
 

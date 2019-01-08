@@ -394,7 +394,7 @@ bool SinglyLinkedList::linkedAfter(int data, int index)
 	if (isIndexValid(index)) 
 	{
 		/*find the node with thei given index*/
-		std::shared_ptr<Node>& findNode = findNodeIndex(index);
+		std::shared_ptr<Node> findNode = findNodeIndex(index);
 	}
 	return false;
 }
@@ -404,7 +404,7 @@ bool SinglyLinkedList::linkedBefore(int data, int index)
 	if (isIndexValid(index)) 
 	{
 		/*find the node with the given index*/
-		std::shared_ptr<Node>& findNode = findNodeIndex(index);
+		std::shared_ptr<Node> findNode = findNodeIndex(index);
 	}
 	return false;
 }

@@ -65,11 +65,43 @@ int main() {
 	testing.pushFront(200);
 	testing.pushBack(300);
 
+	std::shared_ptr<Doubly_Node> head= testing.getHead();
+	std::shared_ptr<Doubly_Node>tail = testing.getTail();
+
+	testing.printInfo();
+	testing.addAfter(head, 8000);
+	testing.addAfter(tail, 10000);
+
+	std::cout<<"before adding to after second ele"<<std::endl;
+	testing.printInfo();
+	std::shared_ptr<Doubly_Node>secondele = testing.getHead()->next;
+
+
+	std::cout<<secondele->getData()<<std::endl;
+
+	//testing.addBefore(head,1);
+
+
+	//testing.addAfter(secondele,2999);
+
+	std::shared_ptr<Doubly_Node> head2= testing.getHead();
+
+	std::shared_ptr<Doubly_Node>tail2 = testing.getTail();
+
+
+	//testing.addBefore(head2,1);
+	//testing.addBefore(tail2,-9);
+	std::shared_ptr<Doubly_Node>third = testing.getHead()->next->next;
+
+	//std::cout<<testing.getHead()->next->next->getData()<<std::endl;
+	testing.addBefore(third,987);
+
+	//std::cout<<"before reverse;"<<std::endl;
+	std::cout<<"after adding to after second ele"<<std::endl;
+
 	testing.printInfo();
 
-	testing.reverse();
 
-	//testing.printResver();
-	testing.printInfo();
-    return 0;
+
+	return 0;
 }

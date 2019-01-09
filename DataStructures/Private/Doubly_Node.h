@@ -16,6 +16,8 @@ private:
 
     /*TODO: change the data to a template */
     int data;
+    int indexPosition;
+
 
 
 public:
@@ -23,6 +25,9 @@ public:
 	std::shared_ptr<Doubly_Node>prev;
     /*TODO: change the return type to a template */
     int getData() const { return  data;}
+
+    void setupIndex(int);
+    int getIndex() const {return indexPosition;}
 
     Doubly_Node(int);
     ~Doubly_Node();

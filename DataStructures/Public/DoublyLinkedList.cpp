@@ -170,6 +170,35 @@ bool DoublyLinkedList::linkedBefore(std::shared_ptr<Doubly_Node> & before, int d
 			}
 
 }
+bool DoublyLinkedList::linkedBefore(int data, int index) 
+{
+	std::shared_ptr<Doubly_Node>newNode = createNode(data);
+	std::shared_ptr < Doubly_Node> find = findNodeIndex(index);
+	if (find != nullptr) 
+	{
+		if (find->getIndex == 0) 
+		{
+			linkedFirst(data);
+			return true;
+		}
+		else if (find->getIndex == tail->getIndex) 
+		{
+			linkedLast(data);
+			return false;      
+		}
+		else
+		{
+
+		}
+	}
+
+	return false;
+}	
+
+bool DoublyLinkedList::linkedAfter(int data, int index) 
+{
+	return false;
+}
 bool DoublyLinkedList::linkAdd(int data, int index)
 {
 	std::shared_ptr<Doubly_Node>newNode= createNode(data);
@@ -189,19 +218,31 @@ bool DoublyLinkedList::linkAdd(int data, int index)
 			if(findNode!= nullptr)
 			{
 				//TODO:do something with
+
 			}
 		}
 	return false;
 }
 std::shared_ptr<Doubly_Node> DoublyLinkedList::findNodeIndex(int index)
 {
+	std::shared_ptr<Doubly_Node>findNode = nullptr;
+	std::shared_ptr<Doubly_Node>currNode = head;
 	 /* is the index valid*/
 	 if(isIndexVaild(index))
 	 {
-
+		 while (currNode!=nullptr)
+		 {
+			 if (currNode->getIndex == index) 
+			 {
+				 findNode = currNode;
+				 return findNode;
+			 }
+			 currNode = currNode->next;
+		 }
+		
 	 }
 	 //else
-	 return nullptr;
+	 return findNode;
 }
 //0(n)
 std::shared_ptr<Doubly_Node> DoublyLinkedList::findNode(std::shared_ptr<Doubly_Node>& find )

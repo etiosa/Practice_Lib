@@ -21,6 +21,8 @@ private:
     bool linkedFirst(int);
     bool linkedAFter(std::shared_ptr<Doubly_Node>&, int);
     bool linkedBefore(std::shared_ptr<Doubly_Node>&,int);
+	bool linkedBefore(int, int);// add before using index
+	bool linkedAfter(int, int);// add after using index
     /* add node base on the index*/
     bool linkAdd (int,int);
 

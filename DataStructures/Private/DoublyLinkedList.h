@@ -19,12 +19,14 @@ private:
     /* Change the argument to template */
     bool linkedLast(int);
     bool linkedFirst(int);
+    /* add base of the index*/
     bool linkedAFter(std::shared_ptr<Doubly_Node>&, int);
     bool linkedBefore(std::shared_ptr<Doubly_Node>&,int);
 	bool linkedBefore(int, int);// add before using index
 	bool linkedAfter(int, int);// add after using index
     /* add node base on the index*/
     bool linkAdd (int,int);
+    //bool checkIndexExist(int);
 
 	std::shared_ptr<Doubly_Node> createNode(int);
 
@@ -32,6 +34,8 @@ private:
 	std::shared_ptr<Doubly_Node> findNode(std::shared_ptr<Doubly_Node>&);
 	bool isIndexVaild(int);
 	std::shared_ptr<Doubly_Node>findNodeIndex(int index);
+
+	void adjustIndex();
 
 public:
     DoublyLinkedList();
@@ -60,6 +64,8 @@ public:
     bool popBack();
 
 	void printResver();
+
+	void printIndex();
 
 };
 

@@ -26,6 +26,7 @@ bool  DoublyLinkedList::deleteList()
     }
     return false;
 }
+
 /* Worse case: o(n)*/
 bool DoublyLinkedList::find(int findData)
 {
@@ -53,6 +54,23 @@ std::shared_ptr<Doubly_Node> DoublyLinkedList::createNode(int data)
 	/*TODO:setup the index*/
 	return newNode;
 }
+// O(1)
+void DoublyLinkedList::adjustIndex()
+{
+	/* adjusting the new created index for the old node index*/
+	std::shared_ptr<Doubly_Node> currentNode = head;
+	std::shared_ptr<Doubly_Node>nextNode=  currentNode->next; //lol prev is null
+
+	 int currentIndex = currentNode->getIndex();
+	 int prevIndex = nextNode->getIndex();
+
+	 //int currentIndextTemp = currentIndex;
+	 //int prevIndexTemp = prevIndex;
+	 /* swamping: after linkedFirst: 1,0*/
+	 currentNode->setupIndex(prevIndex);
+	 nextNode->setupIndex(currentIndex);
+
+}
 bool DoublyLinkedList::linkedFirst(int data) 
 {
 	std::shared_ptr<Doubly_Node>newNode = createNode(data);
@@ -64,9 +82,15 @@ bool DoublyLinkedList::linkedFirst(int data)
 	else 
 	{
 		newNode->next = head;
+
 		head->prev = newNode;
+		adjustIndex(); // I am just swamping the value
+
 		head = newNode;
 		newNode->prev = nullptr;
+		// adjust index after insertion
+		//adjustIndex(head); // I am just swamping the value
+
 		return true;
 
 	}
@@ -316,4 +340,17 @@ void DoublyLinkedList::addBefore(std::shared_ptr<Doubly_Node>& before, int data)
 void DoublyLinkedList::addAfter(std::shared_ptr<Doubly_Node> & after, int data)
 {
 	linkedAFter(after, data);
+}
+
+
+/* test index */
+void DoublyLinkedList::printIndex()
+{
+	std::shared_ptr<Doubly_Node>current= head;
+	while(current!= nullptr)
+	{
+		/* cout is */
+		std::cout<<" "<<current->getIndex();
+		current=current->next;
+	}
 }

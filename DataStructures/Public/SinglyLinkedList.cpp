@@ -24,7 +24,7 @@ void SinglyLinkedList::reverse()
 	while (currNode!=nullptr)
 	{
 		nextNode = currNode->next; 		
-		currNode->next = prevNode;
+		currNode->next = prevNode;//swaping
 		if (currNode->next == nullptr) 
 		{
 			tail = currNode;

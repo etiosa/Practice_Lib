@@ -2,6 +2,9 @@
 #include <iostream>
 #include "../DataStructures/Private/SinglyLinkedList.h"
 #include"../DataStructures/Private/DoublyLinkedList.h"
+#include "../DataStructures/Private/Stacks_Imp.h"
+#include "../DataStructures/Private/Queue_Imp.h"
+
 int main() {
   //  SinglyLinkedList testing;
     //testing.Testing<int>();
@@ -63,21 +66,25 @@ int main() {
 	DoublyLinkedList testing;
 	testing.pushFront(100);
 	testing.pushFront(200);
-	testing.pushBack(300);
+	///testing.pushBack(300);
+	//testing.pushFront(200);
+	//testing.pushFront(1000);
+
+
 
 	std::shared_ptr<Doubly_Node> head= testing.getHead();
 	std::shared_ptr<Doubly_Node>tail = testing.getTail();
 
-	testing.printInfo();
-	testing.addAfter(head, 8000);
-	testing.addAfter(tail, 10000);
+	///testing.printInfo();
+	//testing.addAfter(head, 8000);
+	//testing.addAfter(tail, 10000);
 
-	std::cout<<"before adding to after second ele"<<std::endl;
-	testing.printInfo();
-	std::shared_ptr<Doubly_Node>secondele = testing.getHead()->next;
+	///std::cout<<"before adding to after second ele"<<std::endl;
+	////testing.printInfo();
+	///std::shared_ptr<Doubly_Node>secondele = testing.getHead()->next;
 
 
-	std::cout<<secondele->getData()<<std::endl;
+	////std::cout<<secondele->getData()<<std::endl;
 
 	//testing.addBefore(head,1);
 
@@ -91,17 +98,43 @@ int main() {
 
 	//testing.addBefore(head2,1);
 	//testing.addBefore(tail2,-9);
-	std::shared_ptr<Doubly_Node>third = testing.getHead()->next->next;
+	////std::shared_ptr<Doubly_Node>third = testing.getHead()->next->next;
 
 	//std::cout<<testing.getHead()->next->next->getData()<<std::endl;
-	testing.addBefore(third,987);
+	///testing.addBefore(third,987);
 
 	//std::cout<<"before reverse;"<<std::endl;
-	std::cout<<"after adding to after second ele"<<std::endl;
+	///std::cout<<"after adding to after second ele"<<std::endl;
 
 	testing.printInfo();
 
+	std::cout<<"index is   "<<std::endl;
+
+	testing.printIndex();
+
+	//int arr[20];
+	/*Stacks_Imp stackstesting (5);
+	stackstesting.push(9);
+	stackstesting.push(12);
+	stackstesting.push(40);
+	stackstesting.push(400);
 
 
+	std::cout<<"the recently added index in the stack is "<<stackstesting.getTop()<<std::endl;
+	//std::cout<<
+	stackstesting.printInfo();
+	int pop = stackstesting.pop();
+	int pop1 = stackstesting.pop();
+	int pop2= stackstesting.pop();
+
+	std::cout<<"pop data is "<<pop<<std::endl;
+	std::cout<<"pop1 data is "<<pop1<<std::endl;
+	std::cout<<"pop2 data is "<<pop2<<std::endl;
+
+	stackstesting.printInfo();
+
+	Queue_Imp t;
+	t.Enequeue(1);
+	t.Dequeue();*/
 	return 0;
 }

@@ -26,7 +26,6 @@ private:
 	bool linkedAfter(int, int);// add after using index
     /* add node base on the index*/
     bool linkAdd (int,int);
-    //bool checkIndexExist(int);
 
 	std::shared_ptr<Doubly_Node> createNode(int);
 
@@ -34,8 +33,13 @@ private:
 	std::shared_ptr<Doubly_Node> findNode(std::shared_ptr<Doubly_Node>&);
 	bool isIndexVaild(int);
 	std::shared_ptr<Doubly_Node>findNodeIndex(int index);
-
+	/*adjust index after new node is added to the front*/
 	void adjustIndex();
+	/*adjust the  index after the head of the node is removed*/
+	void adjustIndexAfterHeadRemoved();
+
+	std::shared_ptr<Doubly_Node>removeFront();
+	std::shared_ptr<Doubly_Node>removeBack();
 
 public:
     DoublyLinkedList();
@@ -60,8 +64,8 @@ public:
     bool find(int);/*TODO: change the paramter to a template */
     bool erase(std::string data);
     bool deleteList();
-    bool popFront();
-    bool popBack();
+    std::shared_ptr<Doubly_Node> popFront();
+    std::shared_ptr<Doubly_Node> popBack();
 
 	void printResver();
 

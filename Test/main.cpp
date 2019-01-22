@@ -66,11 +66,12 @@ int main() {
 	DoublyLinkedList testing;
 	testing.pushFront(100);
 	testing.pushFront(200);
-	///testing.pushBack(300);
-	//testing.pushFront(200);
-	//testing.pushFront(1000);
+	testing.pushBack(300);
+	testing.pushFront(200);
+	testing.pushFront(1000);
+	testing.printInfo();
 
-
+	testing.popBack();
 
 	std::shared_ptr<Doubly_Node> head= testing.getHead();
 	std::shared_ptr<Doubly_Node>tail = testing.getTail();

@@ -26,6 +26,64 @@ bool  DoublyLinkedList::deleteList()
     }
     return false;
 }
+std::shared_ptr<Doubly_Node> DoublyLinkedList::removeFront()
+{
+	/*TODO:  throw execption if the list is empty*/
+	std::shared_ptr<Doubly_Node> result = nullptr;
+	/*if there's just one element in the list*/
+	if (size == 1)
+	{
+		result = head;
+		size--;
+		head = tail = nullptr;
+		return result;
+	}
+	else
+	{
+		size--;
+		result = head;
+		/* adjust the node*/
+		head = head->next;
+		/*adjust the index*/
+		adjustIndexAfterHeadRemoved();
+	}
+	return result;
+}
+std::shared_ptr<Doubly_Node> DoublyLinkedList::removeBack()
+{
+	/*TODO: throw execption when the list is empty*/
+	std::shared_ptr<Doubly_Node> result = nullptr;
+	/*if there's just one element in the list*/
+	if (size == 1)
+	{
+		size--;
+		result = head;
+		head = tail = nullptr;
+		return result;
+	}
+	else
+	{
+		size--;
+		/* need to find the prev node*/
+		std::shared_ptr<Doubly_Node> prevNode = tail->prev;
+		result = tail;
+		tail = prevNode;
+		prevNode->next = nullptr;
+		return result;
+	}
+	return result;
+}
+std::shared_ptr<Doubly_Node> DoublyLinkedList::popFront()
+{
+	std::shared_ptr<Doubly_Node> result = removeFront();
+	return result;
+}
+
+std::shared_ptr<Doubly_Node>DoublyLinkedList::popBack()
+{
+	std::shared_ptr<Doubly_Node> result = removeBack();
+	return result;
+}
 
 /* Worse case: o(n)*/
 bool DoublyLinkedList::find(int findData)
@@ -38,13 +96,15 @@ bool DoublyLinkedList::find(int findData)
             return true;
             //set<int> seti;
         }
+		current = current->next;
+			 
     }
     return false;
 }
 
 bool DoublyLinkedList::isIndexVaild(int index)
 {
-	return index>0&&index<size;
+	return index>=0&&index<size;
 }
 std::shared_ptr<Doubly_Node> DoublyLinkedList::createNode(int data) 
 {
@@ -54,22 +114,41 @@ std::shared_ptr<Doubly_Node> DoublyLinkedList::createNode(int data)
 	/*TODO:setup the index*/
 	return newNode;
 }
-// O(1)
+//O(N)
+/*TODO: optimize this solution*/
+void DoublyLinkedList::adjustIndexAfterHeadRemoved() 
+{
+	
+	std::shared_ptr<Doubly_Node>currNode = head;
+	while (currNode!=nullptr)
+	{
+		currNode->setupIndex(currNode->getIndex() - 1);
+		currNode = currNode->next;
+	}
+	return;
+}
+// O(n)
+/*TODO: optimize this solution*/
 void DoublyLinkedList::adjustIndex()
 {
 	/* adjusting the new created index for the old node index*/
 	std::shared_ptr<Doubly_Node> currentNode = head;
-	std::shared_ptr<Doubly_Node>nextNode=  currentNode->next; //lol prev is null
+	std::shared_ptr<Doubly_Node>nextNode=  nullptr; 
 
-	 int currentIndex = currentNode->getIndex();
-	 int prevIndex = nextNode->getIndex();
-
-	 //int currentIndextTemp = currentIndex;
-	 //int prevIndexTemp = prevIndex;
-	 /* swamping: after linkedFirst: 1,0*/
-	 currentNode->setupIndex(prevIndex);
-	 nextNode->setupIndex(currentIndex);
-
+	 int prevtIndex;
+	 int nextIndex;
+	 while (currentNode->next!=nullptr)
+	 {
+		 prevtIndex = currentNode->getIndex();
+		 nextNode = currentNode->next;
+		 nextIndex = nextNode->getIndex();
+		 /*swamp*/
+		 currentNode->setupIndex(nextIndex);
+		 nextNode->setupIndex(prevtIndex);
+		 currentNode = nextNode;
+	 }
+	 return;
+	
 }
 bool DoublyLinkedList::linkedFirst(int data) 
 {
@@ -84,13 +163,11 @@ bool DoublyLinkedList::linkedFirst(int data)
 		newNode->next = head;
 
 		head->prev = newNode;
-		adjustIndex(); // I am just swamping the value
 
 		head = newNode;
 		newNode->prev = nullptr;
 		// adjust index after insertion
-		//adjustIndex(head); // I am just swamping the value
-
+		adjustIndex();
 		return true;
 
 	}
@@ -180,12 +257,12 @@ bool DoublyLinkedList::linkedBefore(std::shared_ptr<Doubly_Node> & before, int d
 			 	newNode->next = find;
 
 			 	find->prev->next=  newNode;
-				 std::cout<<"find ->getData() is "<<find->getData()<<std::endl;
+				// std::cout<<"find ->getData() is "<<find->getData()<<std::endl;
 
 				 int data = find->prev->next->getData();
 			 	newNode->prev = find->prev;
-				 std::cout<<"find ->prev->next->getData() is "<<data<<std::endl;
-				 std::cout<<"find ->prev->prev->next->getData() is "<<find->prev->prev->next->getData()<<std::endl;
+				// std::cout<<"find ->prev->next->getData() is "<<data<<std::endl;
+				 //std::cout<<"find ->prev->prev->next->getData() is "<<find->prev->prev->next->getData()<<std::endl;
 
 				 return true;
 			 }
@@ -200,19 +277,24 @@ bool DoublyLinkedList::linkedBefore(int data, int index)
 	std::shared_ptr < Doubly_Node> find = findNodeIndex(index);
 	if (find != nullptr) 
 	{
-		if (find->getIndex == 0) 
+		if (find->getIndex() == 0) 
 		{
 			linkedFirst(data);
 			return true;
 		}
-		else if (find->getIndex == tail->getIndex) 
+		else if (find->getIndex() == tail->getIndex()) 
 		{
 			linkedLast(data);
 			return false;      
 		}
 		else
 		{
+			/*O(N)*/
+			std::shared_ptr<Doubly_Node> currNode= 
+			while (true)
+			{
 
+			}
 		}
 	}
 
@@ -256,7 +338,7 @@ std::shared_ptr<Doubly_Node> DoublyLinkedList::findNodeIndex(int index)
 	 {
 		 while (currNode!=nullptr)
 		 {
-			 if (currNode->getIndex == index) 
+			 if (currNode->getIndex() == index) 
 			 {
 				 findNode = currNode;
 				 return findNode;

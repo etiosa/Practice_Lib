@@ -40,7 +40,8 @@ private:
 
 	std::shared_ptr<Doubly_Node>removeFront();
 	std::shared_ptr<Doubly_Node>removeBack();
-
+	/**/
+	void updateIndexAfterLinkedLBefore(std::shared_ptr<Doubly_Node>&);
 public:
     DoublyLinkedList();
     ~DoublyLinkedList();
@@ -51,7 +52,7 @@ public:
 	void printInfo();
 	void addAfter(std::shared_ptr<Doubly_Node>&, int);
 	void addBefore(std::shared_ptr<Doubly_Node>&, int);
-
+	void addBefore(int, int);
     std::shared_ptr<Doubly_Node> getHead() const{ return head;}
     std::shared_ptr<Doubly_Node> getTail() const{ return tail;}
 

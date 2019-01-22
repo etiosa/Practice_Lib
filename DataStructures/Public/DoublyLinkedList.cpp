@@ -180,6 +180,7 @@ bool DoublyLinkedList::linkedLast(int data)
 	if(tail==nullptr)
 	{
 		head = tail = newNode;
+		return true; 
 	}
 	else 
 	{
@@ -187,6 +188,7 @@ bool DoublyLinkedList::linkedLast(int data)
 		newNode->next = nullptr;
 		newNode->prev = tail;
 		tail = newNode;
+		return true;
 
 
 	}
@@ -271,9 +273,10 @@ bool DoublyLinkedList::linkedBefore(std::shared_ptr<Doubly_Node> & before, int d
 			}
 
 }
+/*TODO: Move createNode from LinkedBefore, LinkedAfter*/
 bool DoublyLinkedList::linkedBefore(int data, int index) 
 {
-	std::shared_ptr<Doubly_Node>newNode = createNode(data);
+	//std::shared_ptr<Doubly_Node>newNode = createNode(data);
 	std::shared_ptr < Doubly_Node> find = findNodeIndex(index);
 	if (find != nullptr) 
 	{
@@ -281,19 +284,42 @@ bool DoublyLinkedList::linkedBefore(int data, int index)
 		{
 			linkedFirst(data);
 			return true;
-		}
+		} 
 		else if (find->getIndex() == tail->getIndex()) 
 		{
 			linkedLast(data);
-			return false;      
+			return true;      
 		}
 		else
 		{
-			/*O(N)*/
-			std::shared_ptr<Doubly_Node> currNode= 
-			while (true)
-			{
+			std::shared_ptr<Doubly_Node>newNode = createNode(data);
 
+			/*O(N)*/
+			std::shared_ptr<Doubly_Node> currNode = head;
+			while (currNode!=nullptr)
+			{
+				if (find == currNode) 
+				{
+					//link it 
+					/*   0,1,2(find)
+						newNode
+					*/
+					// 0 ,1 , newNode, find(index =2)
+
+					//0,1,2,3
+					// 0, 1, newNode(2),3,4
+					//give the index to the newCreated Node,
+					//then increment all the index after the node by one
+					newNode->next = find;
+					find->prev->next = newNode;
+					newNode->prev = find;
+					newNode->setupIndex(find->getIndex());
+					/*adjust the index*/
+					updateIndexAfterLinkedLBefore(find);
+						
+					return true;
+				}
+				currNode = currNode->next;
 			}
 		}
 	}
@@ -301,6 +327,14 @@ bool DoublyLinkedList::linkedBefore(int data, int index)
 	return false;
 }	
 
+void DoublyLinkedList::updateIndexAfterLinkedLBefore(std::shared_ptr<Doubly_Node>& updateindex) 
+{
+	while (updateindex!=nullptr)
+	{
+		updateindex->setupIndex(updateindex->getIndex() + 1);
+		updateindex = updateindex->next;
+	}
+}
 bool DoublyLinkedList::linkedAfter(int data, int index) 
 {
 	return false;
@@ -418,7 +452,10 @@ void DoublyLinkedList::addBefore(std::shared_ptr<Doubly_Node>& before, int data)
 {
 	linkedBefore(before, data);
 }
-
+void DoublyLinkedList::addBefore(int data, int index) 
+{
+	linkedBefore(data, index);
+}
 void DoublyLinkedList::addAfter(std::shared_ptr<Doubly_Node> & after, int data)
 {
 	linkedAFter(after, data);

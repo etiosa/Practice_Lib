@@ -69,9 +69,10 @@ int main() {
 	testing.pushBack(300);
 	testing.pushFront(200);
 	testing.pushFront(1000);
+	testing.addBefore(-90, 4);
 	testing.printInfo();
 
-	testing.popBack();
+	//testing.popBack();
 
 	std::shared_ptr<Doubly_Node> head= testing.getHead();
 	std::shared_ptr<Doubly_Node>tail = testing.getTail();

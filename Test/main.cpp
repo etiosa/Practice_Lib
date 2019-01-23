@@ -6,7 +6,11 @@
 #include "../DataStructures/Private/Queue_Imp.h"
 
 int main() {
-  //  SinglyLinkedList testing;
+
+	//i=y;
+	//y=i;
+  //  SinglyLi
+  //  nkedList testing;
     //testing.Testing<int>();
  /*   testing.pushFront(5);//index 0  ...now swamping
     testing.pushFront(4);//index 1
@@ -70,7 +74,9 @@ int main() {
 	testing.pushFront(200);
 	testing.pushFront(1000);
 	testing.addBefore(-90, 4);
+
 	testing.printInfo();
+
 
 	//testing.popBack();
 

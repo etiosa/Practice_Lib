@@ -71,6 +71,12 @@ void Stacks_Imp::push(int data)
      * 3) 3 -1 = 2
      * 4) 4 -1 = 3 ---> most recent
      * */
+    /* int  top in constrctor as 1 : and sub 1 from it
+     *
+     * top = 0 -1+size; // 0
+     * top = 0-1+2///1
+     * top = 1 -1+3
+     * 0*/
       size++;
       top = size -1;
       stacks_Ar[top] = data;

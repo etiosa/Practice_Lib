@@ -164,6 +164,7 @@ bool DoublyLinkedList::linkedFirst(int data)
 
 		head->prev = newNode;
 
+		
 		head = newNode;
 		newNode->prev = nullptr;
 		// adjust index after insertion

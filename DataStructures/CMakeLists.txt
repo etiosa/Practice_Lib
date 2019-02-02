@@ -11,7 +11,7 @@ add_executable(DataStructures
     Private/ArrayList.h
     Private/AVL_Tree.h
     Private/B_Tree.h
-    Private/Binary_Tree.h
+        Private/BinaryTree.h
     Private/DisJoint_Set.h
     Private/Doubly_Node.h
     Private/DoublyLinkedList.h
@@ -28,7 +28,7 @@ add_executable(DataStructures
     Public/ArrayList.cpp
     Public/AVL_Tree.cpp
     Public/B_Tree.cpp
-    Public/Binary_Tree.cpp
+        Public/BinaryTree.cpp
     Public/DisJoint_Set.cpp
     Public/Doubly_Node.cpp
     Public/DoublyLinkedList.cpp

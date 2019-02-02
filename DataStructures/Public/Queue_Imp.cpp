@@ -75,6 +75,6 @@ int Queue_Imp::Dequeue()
    //once the we reach the head==size..we are done with the list of the queue
 
 
-   return 0;
+   return data;
 
 }

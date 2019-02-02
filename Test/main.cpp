@@ -4,7 +4,8 @@
 #include"../DataStructures/Private/DoublyLinkedList.h"
 #include "../DataStructures/Private/Stacks_Imp.h"
 #include "../DataStructures/Private/Queue_Imp.h"
-#include<algorithm>
+#include "../DataStructures/Private/BinaryTree.h"
+
 int main() {
 
 	//i=y;
@@ -67,7 +68,7 @@ int main() {
     //: old is 0
     //: new is 3..
 	*/
-	DoublyLinkedList testing;
+	/*DoublyLinkedList testing;
 	testing.pushFront(100);
 	testing.pushFront(200);
 	testing.pushBack(300);
@@ -125,10 +126,10 @@ int main() {
 	stackstesting.push(9);
 	stackstesting.push(12);
 	stackstesting.push(40);
-	stackstesting.push(400);
+	stackstesting.push(400);*/
 
 
-	std::cout<<"the recently added index in the stack is "<<stackstesting.getTop()<<std::endl;
+	/*std::cout<<"the recently added index in the stack is "<<stackstesting.getTop()<<std::endl;
 	//std::cout<<
 	stackstesting.printInfo();
 	int pop = stackstesting.pop();
@@ -139,11 +140,19 @@ int main() {
 	std::cout<<"pop1 data is "<<pop1<<std::endl;
 	std::cout<<"pop2 data is "<<pop2<<std::endl;
 
-	stackstesting.printInfo();
+	stackstesting.printInfo();*/
 
-	Queue_Imp t;
+	/*Queue_Imp t;
 	t.Enequeue(1);
-	t.Dequeue();*/
-/*TODO: Forget to include priortiy queue*/
-return 0;
+    t.Enequeue(2);
+    t.Enequeue(3);
+    t.Enequeue(4);
+    t.Enequeue(5);
+
+    t.Dequeue();*/
+
+	BinaryTree bst;
+	bst.addToBST(10);
+
+	return 0;
 }

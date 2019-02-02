@@ -4,7 +4,7 @@
 #include"../DataStructures/Private/DoublyLinkedList.h"
 #include "../DataStructures/Private/Stacks_Imp.h"
 #include "../DataStructures/Private/Queue_Imp.h"
-
+#include<algorithm>
 int main() {
 
 	//i=y;
@@ -144,5 +144,6 @@ int main() {
 	Queue_Imp t;
 	t.Enequeue(1);
 	t.Dequeue();*/
-	return 0;
+/*TODO: Forget to include priortiy queue*/
+return 0;
 }

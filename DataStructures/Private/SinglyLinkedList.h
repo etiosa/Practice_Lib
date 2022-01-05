@@ -8,6 +8,7 @@
 /* TODO: change the raw pointer to smart_pointer: shared pointer*/
 #include<memory>
 #include"Node.h"
+#include<string>
 class SinglyLinkedList {
 private:
     int size;
@@ -67,8 +68,9 @@ public:
     std::shared_ptr<Node> const& returnHead() const {return head;}
     std::shared_ptr<Node>& ascendSort();
     //Node* ascendSort();
-    std::shared_ptr<Node>& descendSort();
+    std::shared_ptr<Node> descendSort(std::shared_ptr<Node>&);
     // Node* descendSort();
+    
 
     /*TODO: change the argument for pushFront and pushBack to  Template */
     void pushFront(int);
@@ -87,17 +89,19 @@ public:
 	bool addBefore(int, int);//index
 
     bool deleteList();
+    
     bool erase(std::string);
     bool find(std::string);
 	/*return node base on the index*/
 	std::shared_ptr<Node> find(int);
-    bool deleteNode();
+    int deleteNode(std::shared_ptr<Node>&, std::shared_ptr<Node>&);
 	/*Add element base on the index*/
 	void add(int, int);
 
 
 	void reverse();
 
+    
 
 
 

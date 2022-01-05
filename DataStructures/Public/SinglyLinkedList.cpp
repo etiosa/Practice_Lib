@@ -71,6 +71,7 @@ void SinglyLinkedList::printInfo()
 {
 	
     std::shared_ptr<Node> currNode= head;
+	std::cout<<"print info  head "<<currNode->getData()<<std::endl;
 	while(currNode!= nullptr)
     {
         std::cout<<" "<<currNode->getData();
@@ -194,6 +195,136 @@ void SinglyLinkedList::addBefore(std::shared_ptr<Node>& before, int data)
 		std::cout << "index is invalid" << std::endl;
 	}
 }*/
+//c
+/*
+Write a function that takes two arguments. The first node from a singly 
+linked list as the first argument and any node in the list as a second argument.  
+The function should delete the second argument (node) from the list.
+
+
+ */
+/* 
+
+Write a function that, when provided the first node of a singly linked list, 
+will sort the list by its values from smallest to largest.
+ Do not use any built-in language sorting methods (e.g. sort in ruby)
+
+Your answer will be judged on both readability and its performance in the worst-case scenario in Big O time.
+
+
+*/
+
+std::shared_ptr<Node> SinglyLinkedList::descendSort(std::shared_ptr<Node>&root){
+     auto currentNode = head;
+	 std::shared_ptr<Node> prevNode =nullptr;
+	 std::shared_ptr<Node>nextNode = nullptr;
+	 std::shared_ptr<Node>sortedList=nullptr
+;
+	 if(root==nullptr){
+		 return nullptr;
+	 }
+	 if (root->next ==nullptr){
+		 return root;
+	 }
+	 
+	 while(currentNode !=nullptr){
+		 nextNode = currentNode->next;
+		 std::cout<<"current node value "<<currentNode->getData()<<std::endl;
+		std::cout<<" next node value "<<nextNode->getData()<<std::endl;
+
+		 if(currentNode->getData()>= nextNode->getData()){
+			 std::cout<<"swamp current with next "<<std::endl;
+			 //current Node is larger than next
+			 //10 ->1
+			 //1->10
+			sortedList=nextNode;
+			//sortedList->next= currentNode;
+			std::cout<<"sorted list datat  "<<sortedList->getData()<<std::endl;
+		 }
+		currentNode=nextNode;
+		//std::cout<<"sno wamp current with next "<<std::endl;
+
+
+	 }
+	 return sortedList;
+  
+
+
+	 //10->1->4->7->null
+	 //1. currentNode 10
+	 //nextNode==1
+	 //compare the currentNode and nextNode data
+	 // if(current.data <= nextNode)
+	 //we can swamp the nextNode to the next Node
+	 //nextNode ->currentNode(1->10)
+
+
+	return nullptr;
+}
+
+int SinglyLinkedList::deleteNode(std::shared_ptr<Node>& root, std::shared_ptr<Node>& searchNode){
+
+	  //check if the node is null
+	 std::shared_ptr<Node> prevNode = nullptr;
+	 auto currentNode = root;
+	  if(root == nullptr){
+		
+		std::cout << "root is null" << std::endl;
+
+		  return -1;
+	  }
+	  if(searchNode == nullptr){
+		  return -1;
+	  }
+	  //if it's first node
+	  if( head->getData() == searchNode->getData()){
+
+		  prevNode = head;
+		  head=nullptr;
+		  head = prevNode->next;
+		  
+          std::cout<<"head and search same data"<<std::endl;
+		  return 1;
+	  }
+	 
+
+	 // loop through the listprint
+	
+    //check if the node is in the head or tail --> o(1)
+
+	 while(currentNode!=nullptr){
+
+			 if(currentNode->getData()== searchNode->getData()){
+				 //if there's a match
+
+				 //12 ->23 -> 24
+				 //is 23
+				 //prev is 12
+				 //current is 23
+				 //prev next point to current-> next
+				 std::cout<<"search node data "<< searchNode->getData()<<std::endl;
+				 prevNode->next = currentNode->next;
+				 //head= prevNode;
+				 return 1;
+
+				 
+
+			 }
+
+			 
+			 else{
+				 prevNode = currentNode;
+				 currentNode=currentNode->next;
+
+			 }
+
+
+	 }
+
+	
+}
+
+
 
 std::shared_ptr<Node>  SinglyLinkedList::find(int index)
 {
